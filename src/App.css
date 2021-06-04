@@ -28,6 +28,7 @@
 	max-width: 1080px;
 	margin: auto;
 	padding: 20px;
+	font-weight: bold;
 	margin-top: 20px;
 	text-align: center;
 	color: #720000;
@@ -98,10 +99,7 @@
 	Color borde: 0F362D;
 	Color iluminado: 369681;
 */
-body{
-	background-color: #632432;
-	font-family: Arial;
-}
+
 
 #main-container{
 	margin: auto;
@@ -139,12 +137,10 @@ form{
 	background-color: white;
 	border-radius: 3px;
 	color: rgb(0, 0, 0);
-	align-items: center;
 	font-size: 0.8em;
 	margin-top: 30px;
 	padding: 50px;
 	margin: 0 auto;
-	width: 1000px;
 	height: 500px;
 }
 
@@ -156,7 +152,8 @@ input, textarea{
 }
 
 label{
-	color: #2cd6b1;
+	color: #000000;
+	font-weight: bold;
 }
 
 .field{
@@ -180,9 +177,9 @@ label{
 	height: 600px;
 	background: #bc4e9c;
 	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, hsla(207, 33%, 87%, 0.644), hsla(193, 77%, 37%, 0.664)), url('https://cdn-images-1.medium.com/max/2000/1*1NmajubggvvbwxT03vUZ1A.jpeg');
+	background: -webkit-linear-gradient(to right, hsla(207, 33%, 87%, 0.644), hsla(193, 77%, 37%, 0.664)), url('https://get.wallhere.com/photo/1920x1200-px-ART-artistic-books-CG-college-digital-females-funny-girls-grass-humor-letter-manipulation-mood-school-sky-stars-study-surreal-women-words-1740423.jpg');
 	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, hsla(207, 33%, 87%, 0.644), hsla(193, 77%, 37%, 0.582)), url('https://cdn-images-1.medium.com/max/2000/1*1NmajubggvvbwxT03vUZ1A.jpeg');
+	background: linear-gradient(to right, hsla(207, 33%, 87%, 0.644), hsla(193, 77%, 37%, 0.582)), url('https://get.wallhere.com/photo/1920x1200-px-ART-artistic-books-CG-college-digital-females-funny-girls-grass-humor-letter-manipulation-mood-school-sky-stars-study-surreal-women-words-1740423.jpg');
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-size: cover;
 	background-attachment: fixed;
@@ -208,12 +205,6 @@ label{
 	font-size: 30px;
 	font-weight: 300;
 	  color:#fff;
-  }
-  
-  .wave{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
   }
   
   /* Personalizacion de seccion de sobre nosotros */

@@ -1,83 +1,83 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../../App.css';
-import { Form, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Container } from 'reactstrap';
+import Cookies from 'universal-cookie';
 
-let url="http://127.0.0.1:8000/api/libro/";
+const url="http://127.0.0.1:8000/api/login/";
+const cookies = new Cookies();
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state =({
       data: [],
-      modalInsertar: false,
-      modalEliminar: false,
       form:{
-        id: '',
-        tituloLibro: '',
-        Description: '',
-        Categoria: '',
-        autores: '',
-        editorial: ''
+        username: '',
+        password: ''
       }
     })
   }
-  componentDidMount() {
-    axios.get(url)
-        .then(response => {
-          console.log(response.data)
-            this.setState({
-                data: response.data.libros
-            })
-        })
-        .catch(error => {
-          console.log(error)
-        })
-  }
+  //Toma los datos en tiempo real
+  handleChange=async e=>{
+    e.persist();
+    await this.setState({
+      form:{
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    });
+    console.log(this.state.form);
+    }
 
+    handleChange=async e=>{
+      e.persist();
+      await this.setState({
+        form:{
+          ...this.state.form,
+          [e.target.name]: e.target.value
+        }
+      });
+      console.log(this.state.form);
+      }
 
+      //Proceso de peticion a la api
+      IniciarSesion=async()=>{
+       await axios.post(url,this.state.form).then(response=>{
+          console.log(response.data);
+          if(response.data === "Usuario no existe"){
+            alert("El usuario ingresado no exite")
+          }else{
+            cookies.set('Token', response.data, {path: "/"});
+            alert("Bienvenido" + cookies.get('Token'));
+            window.location.href = "./HomeLogin";
+          }
+        }).catch(error=>{
+          console.log(error.message);
+        })
+      }
+      //Renderizado del formulario
   render() {
-    const {form}=this.state;
     return(
       <>
-        <h2 className="title-cards"> Administrar datos </h2>
-        <div id="main-container">
-          <table>
-            <thead>
-              <tr>
-                <th> ID </th>
-                <th> Titulo </th>
-                <th> Description</th>
-                <th> Categoria </th>
-                <th> Autor </th>
-                <th> Editorial </th>
-                <th>  </th>
-                <th>  </th>
-              </tr>
-            </thead>
-    {this.state.data.map(nombre =>{
-      return(
-        <>
-         <tr>
-         <td>{nombre._id}</td>
-         <td>{nombre.tituloLibro}</td>
-          <td>{nombre.description}</td>
-          <td>{nombre.categoria}</td>
-          <td>{nombre.autores}</td>
-          <td>{nombre.editorial}</td>
-          <td>
-            <button className="btn btn-primary"><i class="fas fa-edit"></i></button>
-          </td>
-          <td>
-            <button className="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-          </td>
-         </tr>
-        </>)})}
-  </table>
-  </div>
-
-    </>
-    )
+        <Container>
+          <h1 className="title-cards"> Login </h1>
+          <div className="container">
+          <div className="container">
+          <div className="form-group">
+            <label htmlFor="id"> Nombre de Usuario </label>
+            <input className="form-control" type="text" name="username" id="username" onChange={this.handleChange} placeholder="Escribir su nombre de Usuario" required/>
+            <br />
+            <label htmlFor="nombre"> Contraseña </label>
+            <input className="form-control" type="password" name="password" id="password" onChange={this.handleChange} placeholder="Escribir su contraseña" required/>
+            </div>
+            <br/>
+            <button className="btn btn-primary form-control" onClick={()=>this.IniciarSesion()}> Iniciar Sesion </button>
+          </div>
+          </div>
+        </Container>
+      </>
+    );
   }
 };
 
