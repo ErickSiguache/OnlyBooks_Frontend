@@ -9,7 +9,7 @@ import About from './components/pages/About';
 import SignUp from './components/pages/SignUp';
 import Marketing from './components/pages/Marketing';
 import Consulting from './components/pages/Consulting';
-import HomeLogin from './components/pages/HomeLogin';
+import AdmLibros from './components/pages/AdmLibros';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path='/sign-up' component={SignUp} />
         <Route path='/marketing' component={Marketing} />
         <Route path='/consulting' component={Consulting} />
-        <Route path="/HomeLogin" component={HomeLogin}/>
+        <Route path="/AdmLibros" component={AdmLibros}/>
       </Switch>
     </Router>
   );

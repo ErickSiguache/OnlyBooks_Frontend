@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 let url="http://127.0.0.1:8000/api/libro/";
 const cookies = new Cookies();
 
-class HomeLogin extends Component {
+class AdmLibros extends Component {
   constructor(props) {
     super(props);
     this.state =({
@@ -32,7 +32,12 @@ class HomeLogin extends Component {
         console.log(response.data)
           this.setState({
             data: response.data.libros
-          })
+          });
+      if(!cookies.get('Token') && !cookies.get('TipoU')){
+        window.location.href='./';
+      }else if(cookies.get('TipoU') === "Cliente"){
+        window.location.href='./';
+      }
     })
     .catch(error => {
       console.log(error)
@@ -91,6 +96,7 @@ class HomeLogin extends Component {
 
   render() {
     console.log("Valor: "+cookies.get('Token'));
+    console.log("Tipo: "+cookies.get('TipoU'));
     const {form}=this.state;
     return(
       <>
@@ -186,4 +192,4 @@ class HomeLogin extends Component {
   }
 };
 
-export default HomeLogin;
+export default AdmLibros;

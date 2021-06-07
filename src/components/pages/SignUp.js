@@ -14,7 +14,8 @@ class SignUp extends Component {
       data: [],
       form:{
         username: '',
-        password: ''
+        password: '',
+        TipUser: ''
       }
     })
   }
@@ -46,11 +47,21 @@ class SignUp extends Component {
        await axios.post(url,this.state.form).then(response=>{
           console.log(response.data);
           if(response.data === "Usuario no existe"){
-            alert("El usuario ingresado no exite")
+            alert("Debe ingresar los datos correctamente")
           }else{
+            console.log(response.data);
             cookies.set('Token', response.data, {path: "/"});
-            alert("Bienvenido" + cookies.get('Token'));
-            window.location.href = "./HomeLogin";
+            if(this.state.form.TipUser === "Cliente"){
+              cookies.set('TipoU', this.state.form.TipUser, {path: "/"});
+              alert("Bienvenido comprador" + cookies.get('Token'));
+              window.location.href = "./";
+            }else if(this.state.form.TipUser === "Administrador"){
+              cookies.set('TipoU', this.state.form.TipUser, {path: "/"});
+              alert("Bienvenido al trabajo" + cookies.get('Token'));
+              window.location.href = "./";
+            }else if(this.state.form.TipUser === "Seleccione"){
+              alert("Debe de seleccionar un tipo de usuario");
+            }
           }
         }).catch(error=>{
           console.log(error.message);
@@ -71,6 +82,19 @@ class SignUp extends Component {
             <label htmlFor="nombre"> Contraseña </label>
             <input className="form-control" type="password" name="password" id="password" onChange={this.handleChange} placeholder="Escribir su contraseña" required/>
             </div>
+            <div className="form-group">
+              <select
+                name="TipUser"
+                className="form-control"
+                id="TipUser"
+                onChange={this.handleChange}
+              >
+                <option value="Seleccione" header> Seleccione su tipo de usuario </option>
+                <option value="Cliente"> Cliente </option>
+                <option value="Administrador"> Administrador </option>
+              </select>
+            </div>
+
             <br/>
             <button className="btn btn-primary form-control" onClick={()=>this.IniciarSesion()}> Iniciar Sesion </button>
           </div>
