@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../../App.css';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 let url="http://127.0.0.1:8000/api/libro/";
 
@@ -41,7 +42,7 @@ class Bibloteca extends Component {
                     <Card.Body>
                       <Card.Title> {nombre.tituloLibro} </Card.Title>
                       <Card.Text> {nombre.description}  </Card.Text>
-                      <a href="#">Leer Màs</a>
+                      <Link to={`/InfoLibros/${nombre._id}`}> Leer Màs </Link>
                     </Card.Body></center>
                   </Card>
                 </div>

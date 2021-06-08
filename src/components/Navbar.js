@@ -73,7 +73,7 @@ function Navbar() {
                       </Link>
                   </li>
               </ul>
-              <Link to='sign-up'>
+              <Link to='/sign-up'>
                 <button className='btnC'> Iniciar Sesion </button>
               </Link>
           </nav>

@@ -10,6 +10,8 @@ import SignUp from './components/pages/SignUp';
 import Marketing from './components/pages/Marketing';
 import Consulting from './components/pages/Consulting';
 import AdmLibros from './components/pages/AdmLibros';
+import AdmUser from './components/pages/AdmUser';
+import InfoLibros from './components/pages/InfoLibro';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path='/marketing' component={Marketing} />
         <Route path='/consulting' component={Consulting} />
         <Route path="/AdmLibros" component={AdmLibros}/>
+        <Route path="/AdmUser" component={AdmUser}/>
+        <Route path="/InfoLibros/:libInfo" component={InfoLibros}/>
       </Switch>
     </Router>
   );
