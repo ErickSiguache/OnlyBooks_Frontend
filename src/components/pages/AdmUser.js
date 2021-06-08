@@ -136,11 +136,27 @@ class AdmUser extends Component {
   }
   //Actualizar
   peticionPut=()=>{
-    axios.put(url+this.state.form._id, this.state.form).then(response=>{
-      alert("El usuario ha sido actualizado correctamente");
-      this.cancelar();
-      this.componentDidMount();
-    })
+    if(this.state.form.nombre === ""){
+      alert("Debe de insertar un nombre");
+    }else if(this.state.form.apellido === ""){
+      alert("Debe de insertar un apellido");
+    }else if(this.state.form.telefono === ""){
+      alert("Debe de insertar un numero de telefono");
+    }else if(this.state.form.email === ""){
+      alert("Debe de insertar un correo electronico");
+    }else if(this.state.form.username === ""){
+      alert("El nombre de usuario no puede quedar vacio");
+    }else if(this.state.form.password === ""){
+      alert("Debe de insertar una contraseña, no puede quedar vacio");
+    }else if(this.state.form.TipUser === ""){
+      alert("Debe de seleccionar un tipo de usuario");
+    }else{
+      axios.put(url+this.state.form._id, this.state.form).then(response=>{
+        alert("El usuario ha sido actualizado correctamente");
+        this.cancelar();
+        this.componentDidMount();
+      })
+    }
   }
   //Renderizado del formulario
   render() {
@@ -166,7 +182,7 @@ class AdmUser extends Component {
                 <div className="form-group row">
                     <div className="col-md-6">
                         <label htmlFor="nombre"> Telefono </label>
-                        <input className="form-control" type="text" name="telefono" id="telefono" pattern="[0-9]{0,8}" onChange={this.handleChange} placeholder="Escribir el numero de telefono" value={form?form.telefono: ''} required/>
+                        <input className="form-control" type="number" name="telefono" id="telefono" pattern="[0-9]+" onChange={this.handleChange} placeholder="Escribir el numero de telefono" value={form?form.telefono: ''} required/>
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="nombre"> Email </label>
