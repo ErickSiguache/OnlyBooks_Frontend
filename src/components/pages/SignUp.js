@@ -20,6 +20,14 @@ class SignUp extends Component {
       }
     })
   }
+  //Cargar datos en tiempo real
+  componentDidMount() {
+      if(cookies.get('TipoU') === "Cliente"){
+        window.location.href='./';
+      }else if(cookies.get('TipoU') === "Administrador"){
+        window.location.href='./';
+      }
+  }
   //Toma los datos en tiempo real
   handleChange=async e=>{
     e.persist();

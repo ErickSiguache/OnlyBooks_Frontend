@@ -36,13 +36,13 @@ class Bibloteca extends Component {
           {this.state.data.map(nombre =>{
             return(
               <>
-                <div class="col-sm-3">
+                <div class="">
                   <Card style={{ width: '18rem' }}><center>
                     <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ9DMNFHxwZcfPXJrJeBMITxPMP3FMZk_ixXzTfzt4G_C-G058" />
                     <Card.Body>
                       <Card.Title> {nombre.tituloLibro} </Card.Title>
                       <Card.Text> {nombre.description}  </Card.Text>
-                      <Link to={`/InfoLibros/${nombre._id}`}> Leer Màs </Link>
+                      <Link to={`/InfoLibros/${nombre._id}`}> Leer Mas </Link>
                     </Card.Body></center>
                   </Card>
                 </div>
